@@ -5,32 +5,36 @@ export default function TextForm(props) {
     console.log("clicked" + text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to uppercase", "success");
   };
 
   const handleLowerCase = () => {
     let newText = text.toLowerCase();
     setText(newText);
     console.log(text);
+    props.showAlert("Converted to Lowercase", "success");
   };
   const handleTitle = () => {
     let titleCase = text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
     console.log(titleCase);
     setText(titleCase);
+    props.showAlert("Converted to SentenceCase", "success");
   };
   const handleClear = () => {
     let clear = "";
     setText(clear);
+    props.showAlert("Clear All", "success");
   };
-  const handleCopy = () => {
-    let copy = text.selectAll;
-    setText(copy);
-  };
+  // const handleCopy = () => {
+  //   let copy = text.selectAll;
+  //   setText(copy);
+  // };
   const handleClick = (e) => {
     console.log("change");
     setText(e.target.value);
   };
 
-  const [text, setText] = useState("Please type here......");
+  const [text, setText] = useState("");
   return (
     <div
       className="container my-4"
@@ -62,9 +66,9 @@ export default function TextForm(props) {
         <button className="btn btn-danger m-1" onClick={handleClear}>
           Clear All
         </button>
-        <button className="btn btn-primary m-1" onClick={handleCopy}>
+        {/* <button className="btn btn-primary m-1" onClick={handleCopy}>
           Copy Text
-        </button>
+        </button> */}
       </div>
       <div
         className="container my-3"
